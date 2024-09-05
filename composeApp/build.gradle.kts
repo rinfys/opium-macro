@@ -13,6 +13,7 @@ kotlin {
         val desktopMain by getting
         
         commonMain.dependencies {
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -23,6 +24,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
         }
         desktopMain.dependencies {
+            implementation(npm("@js-joda/timezone", "2.3.0"))
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
         }
