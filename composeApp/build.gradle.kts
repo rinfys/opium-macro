@@ -7,10 +7,10 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
         }
 
 kotlin {
-    jvm("desktop")
+    jvm("opium")
 
     sourceSets {
-        val desktopMain by getting
+        val opiumMain by getting
 
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -22,7 +22,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
         }
-        desktopMain.dependencies {
+        opiumMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
         }

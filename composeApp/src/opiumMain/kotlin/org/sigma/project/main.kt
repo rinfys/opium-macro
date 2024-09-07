@@ -12,7 +12,9 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         state = windowState,
-        title = "opium macro"
+        title = "opium macro",
+        resizable = false,
+
     ) {
         App()
     }
