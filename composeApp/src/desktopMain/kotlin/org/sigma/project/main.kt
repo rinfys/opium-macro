@@ -1,4 +1,4 @@
-package org.example.project
+package org.sigma.project
 
 import App
 import androidx.compose.material.MaterialTheme
