@@ -17,7 +17,7 @@ data class DetailsScreen(val id: Int) : Screen {
         val navigator = LocalNavigator.currentOrThrow
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.CenterStart
         ) {
             Button(onClick = {navigator.pop() }) {
                 Text(text = "Go back ($id)")
