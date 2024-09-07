@@ -10,26 +10,20 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kotlin.random.Random
 
-class HomeScreen : Screen {
+data class DetailsScreen(val id: Int) : Screen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Button(
-                onClick = {
-                    navigator.push(
-                        DetailsScreen(Random.nextInt(0,100))
-                    )
-                }
-            ) {
-                Text(text = "Go to Details")
+            Button(onClick = {navigator.pop() }) {
+                Text(text = "Go back ($id)")
             }
         }
+
     }
+
 }
