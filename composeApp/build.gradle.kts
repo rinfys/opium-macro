@@ -39,11 +39,11 @@ compose.desktop {
             packageVersion = "1.0.0"
 
             macOS {
-                iconFile.set(project.file("resources/opium.icns"))
+                iconFile.set(project.file("rinfy.icns"))
             }
 
             windows {
-                iconFile.set(project.file("resources/opium.ico"))
+                iconFile.set(project.file("opium.ico"))
         }
     }
 }}
