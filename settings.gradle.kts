@@ -1,4 +1,4 @@
-rootProject.name = "opiummacro"
+rootProject.name = "KotlinProject"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

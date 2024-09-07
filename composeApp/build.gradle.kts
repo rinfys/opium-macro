@@ -1,19 +1,18 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
-plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
-}
+        plugins {
+            alias(libs.plugins.kotlinMultiplatform)
+            alias(libs.plugins.jetbrainsCompose)
+            alias(libs.plugins.compose.compiler)
+        }
 
 kotlin {
     jvm("desktop")
-    
+
     sourceSets {
         val desktopMain by getting
-        
+
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -22,18 +21,13 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.transitions)
-
         }
         desktopMain.dependencies {
-            implementation(npm("@js-joda/timezone", "2.3.0"))
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
-
 
 compose.desktop {
     application {
@@ -43,6 +37,13 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "org.example.project"
             packageVersion = "1.0.0"
+
+            macOS {
+                iconFile.set(project.file("resources/opium.icns"))
+            }
+
+            windows {
+                iconFile.set(project.file("resources/opium.ico"))
         }
     }
-}
+}}
