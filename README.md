@@ -1,11 +1,7 @@
-This is a Kotlin Multiplatform project targeting Desktop.
+# a mess
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+this is NOT at ALLLL near completion.
+i am learning kotlin with this and doing the ui with jetpack compose which is turning out amazing for me and its been a saviour
 
+i expect to finish this at the end of september
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
