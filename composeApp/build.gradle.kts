@@ -41,7 +41,7 @@ compose.desktop {
             packageVersion = "1.0.0"
 
             macOS {
-                iconFile.set(projectDir.resolve("composeResources/files/rinfy.icns"))
+                iconFile.set(projectDir.resolve("resources/opium.icns"))
             }
 
             windows {

@@ -13,7 +13,6 @@ fun main() = application {
         state = windowState,
         title = "opium macro",
         resizable = false,
-        undecorated = true
     ) {
         App()
     }
