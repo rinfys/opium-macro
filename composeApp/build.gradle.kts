@@ -1,10 +1,10 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
-        plugins {
-            alias(libs.plugins.kotlinMultiplatform)
-            alias(libs.plugins.jetbrainsCompose)
-            alias(libs.plugins.compose.compiler)
-        }
+plugins {
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.compose.compiler)
+}
 
 kotlin {
     jvm("opium")
@@ -23,8 +23,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
         }
         opiumMain.dependencies {
+            implementation(libs.coil)
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.okkhttp)
         }
     }
 }
@@ -39,11 +41,16 @@ compose.desktop {
             packageVersion = "1.0.0"
 
             macOS {
-                iconFile.set(project.file("rinfy.icns"))
+                iconFile.set(projectDir.resolve("composeResources/files/rinfy.icns"))
             }
 
             windows {
-                iconFile.set(project.file("opium.ico"))
+                iconFile.set(projectDir.resolve("composeResources/files/opium.ico"))
+            }
         }
+
+        jvmArgs(
+            "--add-opens", "java.base/sun.net.www.protocol.https=ALL-UNNAMED"
+        )
     }
-}}
+}
