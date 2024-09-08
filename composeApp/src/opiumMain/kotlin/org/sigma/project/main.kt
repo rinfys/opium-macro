@@ -7,12 +7,13 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 
 fun main() = application {
-    val windowState = rememberWindowState(width = 800.dp, height = 450.dp)
+    val windowState = rememberWindowState(width = 775.dp, height = 442.dp)
     Window(
         onCloseRequest = ::exitApplication,
         state = windowState,
         title = "opium macro",
         resizable = false,
+        undecorated = true
     ) {
         App()
     }
