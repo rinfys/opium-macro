@@ -48,7 +48,7 @@ compose.desktop {
             packageVersion = "1.0.0"
 
             macOS {
-                iconFile.set(projectDir.resolve("wg.icns"))
+                iconFile.set(project.file("resources/test.icns"))
             }
 
             windows {

@@ -4,7 +4,10 @@ import App
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
@@ -24,6 +27,7 @@ fun main() = application {
         height = 100.dp,
         position = WindowPosition(780.dp, 460.dp)
     )
+    val icon = painterResource("sigma.png")
     var alwaysOnTop by remember { mutableStateOf(true) }
 
     Window(
@@ -31,7 +35,8 @@ fun main() = application {
         state = mainWindowState,
         title = "opium macro",
         resizable = false,
-        undecorated = true
+        undecorated = true,
+        icon = icon
     ) {
         App()
     }
@@ -42,13 +47,13 @@ fun main() = application {
         undecorated = true,
         transparent = true,
         alwaysOnTop = alwaysOnTop,
-        focusable = true
+        focusable = false
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .onFocusChanged {
-                    alwaysOnTop = it.isFocused
+                    alwaysOnTop = it.isFocused != true
                 }
         ) {
             Image(
