@@ -41,11 +41,11 @@ compose.desktop {
             packageVersion = "1.0.0"
 
             macOS {
-                iconFile.set(projectDir.resolve("opium.icns"))
+                iconFile.set(projectDir.resolve("wg.icns"))
             }
 
             windows {
-                iconFile.set(projectDir.resolve("composeResources/files/opium.ico"))
+                iconFile.set(projectDir.resolve("opium.ico"))
             }
         }
 
