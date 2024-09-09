@@ -2,52 +2,60 @@ package org.sigma.project
 
 import App
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.DpOffset
-import androidx.compose.ui.window.WindowPosition
-import androidx.compose.ui.Alignment
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() = application {
-    val windowState = rememberWindowState(width = 775.dp, height = 442.dp)
+    val windowopened = remember { mutableStateOf(false) }
+    val mainWindowState = rememberWindowState(width = 775.dp, height = 442.dp)
+    val secondWindowState = rememberWindowState(
+        width = 100.dp,
+        height = 100.dp,
+        position = WindowPosition(780.dp, 460.dp)
+    )
+    var alwaysOnTop by remember { mutableStateOf(true) }
+
     Window(
         onCloseRequest = ::exitApplication,
-        state = windowState,
+        state = mainWindowState,
         title = "opium macro",
         resizable = false,
         undecorated = true
     ) {
-        val imageWindowState = rememberWindowState(
-            width = 200.dp,
-            height = 200.dp,
-            position = WindowPosition(Alignment.TopStart)
-        )
-        Window(
-            onCloseRequest = {},
-            state = rememberWindowState(width = 200.dp, height = 200.dp),
-            undecorated = true,
-            transparent = true
-        ) {
-            Box(
-                modifier = Modifier.fillMaxSize().background(Color.Transparent)
-            ) {
-                Image(
-                    painter = painterResource("tosha.png"),
-                    contentDescription = null,
-                    modifier = Modifier.padding(5.dp)
-                )
-            }
         App()
+    }
+    Window(
+        onCloseRequest = {},
+        state = secondWindowState,
+        resizable = false,
+        undecorated = true,
+        transparent = true,
+        alwaysOnTop = alwaysOnTop,
+        focusable = true
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .onFocusChanged {
+                    alwaysOnTop = it.isFocused
+                }
+        ) {
+            Image(
+                painter = painterResource("tosha.png"),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize()
+            )
         }
     }
 }

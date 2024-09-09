@@ -1,9 +1,15 @@
+// build.gradle.kts
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 kotlin {
@@ -27,6 +33,7 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
             implementation(libs.okkhttp)
+            implementation(compose.desktop.currentOs)
         }
     }
 }
