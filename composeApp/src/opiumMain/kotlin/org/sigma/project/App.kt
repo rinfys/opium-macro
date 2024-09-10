@@ -26,7 +26,11 @@ fun App() {
     var lineColor1 by remember { mutableStateOf(rodcol1) }
     var lineColor2 by remember { mutableStateOf(rodcol) }
     var lineColor3 by remember { mutableStateOf(rodcol) }
-    val items1 = listOf(
+
+    var fieldchoicePF1: String
+    var shapechoicePF1: String
+
+    val fields1 = listOf(
         "Rose",
         "Bamboo",
         "Mountain Top",
@@ -45,6 +49,17 @@ fun App() {
         "Pumpkin",
         "Cactus"
     )
+    val shapes1 = listOf(
+        "squares",
+        "snake",
+        "e_lol",
+        "typewriter",
+        "superdog",
+        "stationary",
+        "cornerxsnake",
+        "spiral",
+        "cornerxe_lol",
+    )
 
     val monserrat = FontFamily(
         Font("font/Montserrat-Black.ttf", FontWeight.Normal)
@@ -56,8 +71,10 @@ fun App() {
         Font("font/Montserrat-Bold.ttf", FontWeight.Normal)
     )
 
-    var expanded by remember { mutableStateOf(false) }
-    var selectedItem by remember { mutableStateOf("Choose field") }
+    val expandedFields = remember { mutableStateListOf(false, false, false, false) }
+    val expandedShapes = remember { mutableStateListOf(false, false, false, false) }
+    val selectedFields = remember { mutableStateListOf("Choose field", "Choose field", "Choose field", "Choose field") }
+    val selectedShapes = remember { mutableStateListOf("Choose shape", "Choose shape", "Choose shape", "Choose shape") }
 
     Box(
         modifier = Modifier.fillMaxSize().background(Color(0xFF161616)).border(1.dp, Color.Black),
@@ -74,7 +91,7 @@ fun App() {
                 Text(
                     "PROFILE 1", color = Color(0xFFFFFFFF), style = TextStyle(
                         fontFamily = monserratBold,
-   baselineShift = ,,                       fontWeigh ght.Normal,
+                        fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 20.sp
                     ), modifier = Modifier.padding(start = 36.dp, top = 13.dp)
@@ -100,17 +117,18 @@ fun App() {
                     contentDescription = null,
                     modifier = Modifier.padding(start = 15.dp, top = 15.dp)
                 )
+                // START OF PROFILE 1 FIELD DROPDOWN
                 Box(
                     modifier = Modifier.padding(start = 70.dp, top = 40.dp)
                 ) {
                     Button(
-                        onClick = { expanded = true },
+                        onClick = { expandedFields[0] = true },
                         modifier = Modifier.size(90.dp, 17.dp),
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
                         contentPadding = PaddingValues(0.dp)
                     ) {
                         Text(
-                            selectedItem, color = Color(0xFFFFFFFF), style = TextStyle(
+                            selectedFields[0], color = Color(0xFFFFFFFF), style = TextStyle(
                                 fontFamily = monserratLight,
                                 fontWeight = FontWeight.Normal,
                                 fontStyle = FontStyle.Normal,
@@ -119,16 +137,54 @@ fun App() {
                         )
                     }
                     DropdownMenu(
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false },
+                        expanded = expandedFields[0],
+                        onDismissRequest = { expandedFields[0] = false },
                         modifier = Modifier.background(Color(0xFFFFFFFF))
                     ) {
-                        items1.forEach { item ->
+                        fields1.forEach { itemF ->
                             DropdownMenuItem(onClick = {
-                                selectedItem = item
-                                expanded = false
+                                selectedFields[0] = itemF
+                                expandedFields[0] = false
+                                fieldchoicePF1 = itemF
+                                println("USER PICKED: $fieldchoicePF1")
                             }) {
-                                Text(item)
+                                Text(itemF)
+                            }
+                        }
+                    }
+                }
+                // START OF PROFILE 1 SHAPES DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 76.dp, top = 62.dp)
+                ) {
+                    Button(
+                        onClick = { expandedShapes[0] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedShapes[0], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedShapes[0],
+                        onDismissRequest = { expandedShapes[0] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        shapes1.forEach { itemSh ->
+                            DropdownMenuItem(onClick = {
+                                selectedShapes[0] = itemSh
+                                expandedShapes[0] = false
+                                shapechoicePF1 = itemSh
+                                println("USER PICKED: $itemSh")
+                            }) {
+                                Text(itemSh)
                             }
                         }
                     }
@@ -173,6 +229,74 @@ fun App() {
                     contentDescription = null,
                     modifier = Modifier.padding(start = 15.dp, top = 15.dp)
                 )
+                // START OF PROFILE 1 FIELD DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 70.dp, top = 40.dp)
+                ) {
+                    Button(
+                        onClick = { expandedFields[1] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedFields[1], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedFields[1],
+                        onDismissRequest = { expandedFields[1] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        fields1.forEach { itemF ->
+                            DropdownMenuItem(onClick = {
+                                selectedFields[1] = itemF
+                                expandedFields[1] = false
+                            }) {
+                                Text(itemF)
+                            }
+                        }
+                    }
+                }
+                // START OF PROFILE 1 SHAPES DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 76.dp, top = 62.dp)
+                ) {
+                    Button(
+                        onClick = { expandedShapes[1] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedShapes[1], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedShapes[1],
+                        onDismissRequest = { expandedShapes[1] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        shapes1.forEach { itemSh ->
+                            DropdownMenuItem(onClick = {
+                                selectedShapes[1] = itemSh
+                                expandedShapes[1] = false
+                            }) {
+                                Text(itemSh)
+                            }
+                        }
+                    }
+                }
             }
         }
 
