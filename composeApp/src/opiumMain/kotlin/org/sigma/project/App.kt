@@ -1,10 +1,7 @@
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,12 +21,30 @@ import kotlin.system.exitProcess
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun App() {
-    var rodcol: Long = 0xFF060606
-    var rodcol1: Long = 0xFF217189
+    val rodcol = 0xFF060606
+    val rodcol1 = 0xFF217189
     var lineColor1 by remember { mutableStateOf(rodcol1) }
     var lineColor2 by remember { mutableStateOf(rodcol) }
     var lineColor3 by remember { mutableStateOf(rodcol) }
-
+    val items1 = listOf(
+        "Rose",
+        "Bamboo",
+        "Mountain Top",
+        "Dandelion",
+        "Sunflower",
+        "Blue Flower",
+        "Mushroom",
+        "Clover",
+        "Pine Tree",
+        "Pepper",
+        "Pineapple",
+        "Spider",
+        "Strawberry",
+        "Coconut",
+        "Stump",
+        "Pumpkin",
+        "Cactus"
+    )
 
     val monserrat = FontFamily(
         Font("font/Montserrat-Black.ttf", FontWeight.Normal)
@@ -41,6 +56,9 @@ fun App() {
         Font("font/Montserrat-Bold.ttf", FontWeight.Normal)
     )
 
+    var expanded by remember { mutableStateOf(false) }
+    var selectedItem by remember { mutableStateOf("Choose field") }
+
     Box(
         modifier = Modifier.fillMaxSize().background(Color(0xFF161616)).border(1.dp, Color.Black),
         contentAlignment = Alignment.TopStart
@@ -50,17 +68,16 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
         ) {
             Box(
-                modifier = Modifier.padding(start = 190.dp, top = 165.dp)
+                modifier = Modifier.padding(start = 194.dp, top = 165.dp)
                     .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
             ) {
                 Text(
                     "PROFILE 1", color = Color(0xFFFFFFFF), style = TextStyle(
                         fontFamily = monserratBold,
-                        fontWeight = FontWeight.Normal,
+   baselineShift = ,,                       fontWeigh ght.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 20.sp
-                    ),
-                    modifier = Modifier.padding(start = 36.dp, top = 13.dp)
+                    ), modifier = Modifier.padding(start = 36.dp, top = 13.dp)
                 )
                 Text(
                     "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -68,8 +85,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 42.dp)
                 )
                 Text(
                     "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -77,14 +93,46 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
                 )
                 Image(
                     painter = painterResource("Tabby.png"),
                     contentDescription = null,
                     modifier = Modifier.padding(start = 15.dp, top = 15.dp)
                 )
+                Box(
+                    modifier = Modifier.padding(start = 70.dp, top = 40.dp)
+                ) {
+                    Button(
+                        onClick = { expanded = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedItem, color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        items1.forEach { item ->
+                            DropdownMenuItem(onClick = {
+                                selectedItem = item
+                                expanded = false
+                            }) {
+                                Text(item)
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -93,7 +141,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
         ) {
             Box(
-                modifier = Modifier.padding(start = 190.dp, top = 290.dp)
+                modifier = Modifier.padding(start = 194.dp, top = 290.dp)
                     .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
             ) {
                 Text(
@@ -102,8 +150,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 20.sp
-                    ),
-                    modifier = Modifier.padding(start = 30.dp, top = 13.dp)
+                    ), modifier = Modifier.padding(start = 36.dp, top = 13.dp)
                 )
                 Text(
                     "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -111,8 +158,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 42.dp)
                 )
                 Text(
                     "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -120,8 +166,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
                 )
                 Image(
                     painter = painterResource("bee1wind.png"),
@@ -136,7 +181,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
         ) {
             Box(
-                modifier = Modifier.padding(start = 410.dp, top = 165.dp)
+                modifier = Modifier.padding(start = 414.dp, top = 165.dp)
                     .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
             ) {
                 Text(
@@ -145,8 +190,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 20.sp
-                    ),
-                    modifier = Modifier.padding(start = 36.dp, top = 13.dp)
+                    ), modifier = Modifier.padding(start = 36.dp, top = 13.dp)
                 )
                 Text(
                     "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -154,8 +198,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 42.dp)
                 )
                 Text(
                     "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -163,8 +206,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
                 )
                 Image(
                     painter = painterResource("Gumball.png"),
@@ -179,7 +221,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
         ) {
             Box(
-                modifier = Modifier.padding(start = 410.dp, top = 290.dp)
+                modifier = Modifier.padding(start = 414.dp, top = 290.dp)
                     .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
             ) {
                 Text(
@@ -188,8 +230,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 20.sp
-                    ),
-                    modifier = Modifier.padding(start = 36.dp, top = 13.dp)
+                    ), modifier = Modifier.padding(start = 36.dp, top = 13.dp)
                 )
                 Text(
                     "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -197,8 +238,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 42.dp)
                 )
                 Text(
                     "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
@@ -206,8 +246,7 @@ fun App() {
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal,
                         fontSize = 13.sp
-                    ),
-                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                    ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
                 )
                 Image(
                     painter = painterResource("Diamond.png"),
@@ -240,9 +279,7 @@ fun App() {
             ) {
                 Text(
                     "main", color = Color(0xFFC6CDCD), style = TextStyle(
-                        fontFamily = monserratLight,
-                        fontWeight = FontWeight.Normal,
-                        fontStyle = FontStyle.Normal
+                        fontFamily = monserratLight, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal
                     )
                 )
             }
@@ -260,9 +297,7 @@ fun App() {
             ) {
                 Text(
                     "addons", color = Color(0xFFC6CDCD), style = TextStyle(
-                        fontFamily = monserratLight,
-                        fontWeight = FontWeight.Normal,
-                        fontStyle = FontStyle.Normal
+                        fontFamily = monserratLight, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal
                     )
                 )
             }
@@ -280,9 +315,7 @@ fun App() {
             ) {
                 Text(
                     "user", color = Color(0xFFC6CDCD), style = TextStyle(
-                        fontFamily = monserratLight,
-                        fontWeight = FontWeight.Normal,
-                        fontStyle = FontStyle.Normal
+                        fontFamily = monserratLight, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal
                     )
                 )
             }
@@ -327,22 +360,18 @@ fun App() {
             modifier = Modifier.padding(5.dp).padding(start = 72.dp, top = 26.dp)
         )
         // Settings
-        Icon(
-            painter = painterResource("Settings.png"),
-            tint = Color(0xFFB7B7B7),
+        Icon(painter = painterResource("Icon.png"),
+            tint = Color(0xFFA4A4A4),
             contentDescription = null,
-            modifier = Modifier.padding(start = 700.dp, top = 30.dp).clickable {
+            modifier = Modifier.padding(start = 700.dp, top = 31.dp).clickable {
 
-            }
-        )
+            })
         // Close
-        Icon(
-            painter = painterResource("X.png"),
-            tint = Color(0xFFB7B7B7),
+        Icon(painter = painterResource("X.png"),
+            tint = Color(0xFFA4A4A4),
             contentDescription = null,
             modifier = Modifier.padding(start = 725.dp, top = 30.dp).clickable {
                 exitProcess(0)
-            }
-        )
+            })
     }
 }
