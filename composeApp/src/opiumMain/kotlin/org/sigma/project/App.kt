@@ -19,7 +19,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.sigma.project.requests.MainRequests
 import kotlin.system.exitProcess
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -31,39 +30,203 @@ fun App() {
     var lineColor2 by remember { mutableStateOf(rodcol) }
     var lineColor3 by remember { mutableStateOf(rodcol) }
 
-    val monserratFont = FontFamily(
-        Font("font/Montserrat-ExtraLight.ttf", FontWeight.Normal)
+
+    val monserrat = FontFamily(
+        Font("font/Montserrat-Black.ttf", FontWeight.Normal)
+    )
+    val monserratLight = FontFamily(
+        Font("font/Montserrat-Light.ttf", FontWeight.Normal)
+    )
+    val monserratBold = FontFamily(
+        Font("font/Montserrat-Bold.ttf", FontWeight.Normal)
     )
 
-    Column {
-        Box(
-            modifier = Modifier.padding(start = 80.dp, top = 150.dp)
-                .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(270.dp).width(150.dp),
-        )
-    }
     Box(
         modifier = Modifier.fillMaxSize().background(Color(0xFF161616)).border(1.dp, Color.Black),
         contentAlignment = Alignment.TopStart
     ) {
-        TooltipArea(
-            tooltip = {
-                Box(
-                    modifier = Modifier.padding(8.dp)
-                ) {
-                    Text(MainRequests.statusCode)
-                }
-            },
-        ) {}
-        // other
+        // PROFILE 1 [OPIUM]
+        Column(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Box(
+                modifier = Modifier.padding(start = 190.dp, top = 165.dp)
+                    .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
+            ) {
+                Text(
+                    "PROFILE 1", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratBold,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 20.sp
+                    ),
+                    modifier = Modifier.padding(start = 36.dp, top = 13.dp)
+                )
+                Text(
+                    "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                )
+                Text(
+                    "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                )
+                Image(
+                    painter = painterResource("Tabby.png"),
+                    contentDescription = null,
+                    modifier = Modifier.padding(start = 15.dp, top = 15.dp)
+                )
+            }
+        }
+
+        // PROFILE 2 [OPIUM]
+        Column(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Box(
+                modifier = Modifier.padding(start = 190.dp, top = 290.dp)
+                    .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
+            ) {
+                Text(
+                    "PROFILE 2", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratBold,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 20.sp
+                    ),
+                    modifier = Modifier.padding(start = 30.dp, top = 13.dp)
+                )
+                Text(
+                    "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                )
+                Text(
+                    "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                )
+                Image(
+                    painter = painterResource("bee1wind.png"),
+                    contentDescription = null,
+                    modifier = Modifier.padding(start = 15.dp, top = 15.dp)
+                )
+            }
+        }
+
+        // PROFILE 3 [OPIUM]
+        Column(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Box(
+                modifier = Modifier.padding(start = 410.dp, top = 165.dp)
+                    .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
+            ) {
+                Text(
+                    "PROFILE 3", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratBold,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 20.sp
+                    ),
+                    modifier = Modifier.padding(start = 36.dp, top = 13.dp)
+                )
+                Text(
+                    "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                )
+                Text(
+                    "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                )
+                Image(
+                    painter = painterResource("Gumball.png"),
+                    contentDescription = null,
+                    modifier = Modifier.padding(start = 15.dp, top = 15.dp)
+                )
+            }
+        }
+
+        // PROFILE 4 [OPIUM]
+        Column(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Box(
+                modifier = Modifier.padding(start = 410.dp, top = 290.dp)
+                    .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(113.dp).width(210.dp)
+            ) {
+                Text(
+                    "PROFILE 4", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratBold,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 20.sp
+                    ),
+                    modifier = Modifier.padding(start = 36.dp, top = 13.dp)
+                )
+                Text(
+                    "FIELD", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 42.dp)
+                )
+                Text(
+                    "SHAPE", color = Color(0xFFFFFFFF), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 13.sp
+                    ),
+                    modifier = Modifier.padding(start = 24.dp, top = 64.dp)
+                )
+                Image(
+                    painter = painterResource("Diamond.png"),
+                    contentDescription = null,
+                    modifier = Modifier.padding(start = 15.dp, top = 15.dp)
+                )
+            }
+        }
+        // MAIN HUB
         Box(
             modifier = Modifier.padding(start = 30.dp, top = 150.dp)
-                .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(270.dp).width(150.dp),
+                .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(270.dp).width(150.dp)
         )
-        // buttons hub
+        // Thing
         Box(
             modifier = Modifier.padding(start = 30.dp, top = 80.dp)
-                .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).padding(5.dp).width(300.dp),
+                .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).padding(5.dp).width(300.dp)
         ) {
+            // Button 1
             Button(
                 onClick = {
                     lineColor1 = 0xFF217189
@@ -75,13 +238,15 @@ fun App() {
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
                 elevation = null
             ) {
-                Text("main", color = Color(0xFFC6CDCD), style = TextStyle(
-                    fontFamily = monserratFont,
-                    fontWeight = FontWeight.Normal,
-                    fontStyle = FontStyle.Normal
-                ))
+                Text(
+                    "main", color = Color(0xFFC6CDCD), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal
+                    )
+                )
             }
-
+            // Button 2
             Button(
                 onClick = {
                     lineColor1 = 0xFF060606
@@ -93,13 +258,15 @@ fun App() {
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
                 elevation = null
             ) {
-                Text("addons", color = Color(0xFFC6CDCD), style = TextStyle(
-                    fontFamily = monserratFont,
-                    fontWeight = FontWeight.Normal,
-                    fontStyle = FontStyle.Normal
-                ))
+                Text(
+                    "addons", color = Color(0xFFC6CDCD), style = TextStyle(
+                        fontFamily = monserratLight,
+                        fontWeight = FontWeight.Normal,
+                        fontStyle = FontStyle.Normal
+                    )
+                )
             }
-
+            // Button 3
             Button(
                 onClick = {
                     lineColor1 = 0xFF060606
@@ -113,14 +280,14 @@ fun App() {
             ) {
                 Text(
                     "user", color = Color(0xFFC6CDCD), style = TextStyle(
-                        fontFamily = monserratFont,
+                        fontFamily = monserratLight,
                         fontWeight = FontWeight.Normal,
                         fontStyle = FontStyle.Normal
                     )
                 )
             }
         }
-
+        // Line 1
         Canvas(modifier = Modifier.fillMaxSize().padding(top = 50.dp)) {
             drawLine(
                 color = Color(lineColor1),
@@ -129,7 +296,7 @@ fun App() {
                 strokeWidth = 1.dp.toPx()
             )
         }
-
+        // Line 2
         Canvas(modifier = Modifier.fillMaxSize().padding(top = 50.dp)) {
             drawLine(
                 color = Color(lineColor2),
@@ -138,7 +305,7 @@ fun App() {
                 strokeWidth = 1.dp.toPx()
             )
         }
-
+        // Line 3
         Canvas(modifier = Modifier.fillMaxSize().padding(top = 50.dp)) {
             drawLine(
                 color = Color(lineColor3),
@@ -147,29 +314,35 @@ fun App() {
                 strokeWidth = 1.dp.toPx()
             )
         }
-
+        // Logo icon
         Image(
             painter = painterResource("sig.png"),
             contentDescription = null,
-            modifier = Modifier.padding(5.dp).padding(start = 20.dp, top = 20.dp),
+            modifier = Modifier.padding(5.dp).padding(start = 20.dp, top = 20.dp)
         )
-
+        // Github icon
+        Image(
+            painter = painterResource("Github.png"),
+            contentDescription = null,
+            modifier = Modifier.padding(5.dp).padding(start = 72.dp, top = 26.dp)
+        )
+        // Settings
         Icon(
             painter = painterResource("Settings.png"),
             tint = Color(0xFFB7B7B7),
             contentDescription = null,
             modifier = Modifier.padding(start = 700.dp, top = 30.dp).clickable {
 
-            },
+            }
         )
-
+        // Close
         Icon(
             painter = painterResource("X.png"),
             tint = Color(0xFFB7B7B7),
             contentDescription = null,
             modifier = Modifier.padding(start = 725.dp, top = 30.dp).clickable {
                 exitProcess(0)
-            },
+            }
         )
     }
 }
