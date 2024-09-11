@@ -17,6 +17,7 @@ import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.system.exitProcess
+import org.sigma.project.requests.Discord
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -132,6 +133,7 @@ fun App() {
                     tint = Color(0xFF535353),
                     contentDescription = null,
                     modifier = Modifier.padding(start = 181.dp, top = 85.dp).clickable {
+                        Discord.sendWebhook("User clicked on profile 1 settings")
 
                         // CLICKABLE
                         // CLICKABLE
