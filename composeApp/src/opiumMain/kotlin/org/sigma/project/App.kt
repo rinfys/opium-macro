@@ -29,6 +29,12 @@ fun App() {
 
     var fieldchoicePF1: String
     var shapechoicePF1: String
+    var fieldchoicePF2: String
+    var shapechoicePF2: String
+    var fieldchoicePF3: String
+    var shapechoicePF3: String
+    var fieldchoicePF4: String
+    var shapechoicePF4: String
 
     val fields1 = listOf(
         "Rose",
@@ -146,13 +152,15 @@ fun App() {
                                 selectedFields[0] = itemF
                                 expandedFields[0] = false
                                 fieldchoicePF1 = itemF
-                                println("USER PICKED: $fieldchoicePF1")
+                                println("USER PICKED THE FIELD: $fieldchoicePF1 ON PROFILE 1")
                             }) {
                                 Text(itemF)
                             }
                         }
                     }
                 }
+                // START OF PROFILE 1 SHAPES DROPDOWN
+                // START OF PROFILE 1 SHAPES DROPDOWN
                 // START OF PROFILE 1 SHAPES DROPDOWN
                 Box(
                     modifier = Modifier.padding(start = 76.dp, top = 62.dp)
@@ -182,7 +190,7 @@ fun App() {
                                 selectedShapes[0] = itemSh
                                 expandedShapes[0] = false
                                 shapechoicePF1 = itemSh
-                                println("USER PICKED: $itemSh")
+                                println("USER PICKED THE SHAPE: $shapechoicePF1 ON PROFILE 1")
                             }) {
                                 Text(itemSh)
                             }
@@ -229,7 +237,9 @@ fun App() {
                     contentDescription = null,
                     modifier = Modifier.padding(start = 15.dp, top = 15.dp)
                 )
-                // START OF PROFILE 1 FIELD DROPDOWN
+                // START OF PROFILE 2 FIELD DROPDOWN
+                // START OF PROFILE 2 FIELD DROPDOWN
+                // START OF PROFILE 2 FIELD DROPDOWN
                 Box(
                     modifier = Modifier.padding(start = 70.dp, top = 40.dp)
                 ) {
@@ -253,17 +263,21 @@ fun App() {
                         onDismissRequest = { expandedFields[1] = false },
                         modifier = Modifier.background(Color(0xFFFFFFFF))
                     ) {
-                        fields1.forEach { itemF ->
+                        fields1.forEach { itemF2 ->
                             DropdownMenuItem(onClick = {
-                                selectedFields[1] = itemF
+                                selectedFields[1] = itemF2
                                 expandedFields[1] = false
+                                fieldchoicePF2 = itemF2
+                                println("USER PICKED THE FIELD: $fieldchoicePF2 ON PROFILE 2")
                             }) {
-                                Text(itemF)
+                                Text(itemF2)
                             }
                         }
                     }
                 }
-                // START OF PROFILE 1 SHAPES DROPDOWN
+                // START OF PROFILE 2 SHAPES DROPDOWN
+                // START OF PROFILE 2 SHAPES DROPDOWN
+                // START OF PROFILE 2 SHAPES DROPDOWN
                 Box(
                     modifier = Modifier.padding(start = 76.dp, top = 62.dp)
                 ) {
@@ -287,12 +301,14 @@ fun App() {
                         onDismissRequest = { expandedShapes[1] = false },
                         modifier = Modifier.background(Color(0xFFFFFFFF))
                     ) {
-                        shapes1.forEach { itemSh ->
+                        shapes1.forEach { itemSh2 ->
                             DropdownMenuItem(onClick = {
-                                selectedShapes[1] = itemSh
+                                selectedShapes[1] = itemSh2
                                 expandedShapes[1] = false
+                                shapechoicePF2 = itemSh2
+                                println("USER PICKED THE SHAPE: $shapechoicePF2 ON PROFILE 2")
                             }) {
-                                Text(itemSh)
+                                Text(itemSh2)
                             }
                         }
                     }
@@ -335,13 +351,92 @@ fun App() {
                 Image(
                     painter = painterResource("Gumball.png"),
                     contentDescription = null,
-                    modifier = Modifier.padding(start = 15.dp, top = 15.dp)
+                    modifier = Modifier.padding(
+                        start = 15.dp, top = 15.dp
+                    )
                 )
-            }
-        }
+                // START OF PROFILE 3 FIELD DROPDOWN
+                // START OF PROFILE 3 FIELD DROPDOWN
+                // START OF PROFILE 3 FIELD DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 70.dp, top = 40.dp)
+                ) {
+                    Button(
+                        onClick = { expandedFields[2] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedFields[2], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedFields[2],
+                        onDismissRequest = { expandedFields[2] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        fields1.forEach { itemF3 ->
+                            DropdownMenuItem(onClick = {
+                                selectedFields[2] = itemF3
+                                expandedFields[2] = false
+                                fieldchoicePF3 = itemF3
+                                println("USER PICKED THE FIELD: $fieldchoicePF3 ON PROFILE 3")
+                            }) {
+                                Text(itemF3)
+                            }
+                        }
+                    }
+                }
 
-        // PROFILE 4 [OPIUM]
-        Column(
+                // START OF PROFILE 3 SHAPES DROPDOWN
+                // START OF PROFILE 3 SHAPES DROPDOWN
+                // START OF PROFILE 3 SHAPES DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 76.dp, top = 62.dp)
+                ) {
+                    Button(
+                        onClick = { expandedShapes[2] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedShapes[2], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedShapes[2],
+                        onDismissRequest = { expandedShapes[0] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        shapes1.forEach { itemSh3 ->
+                            DropdownMenuItem(onClick = {
+                                selectedShapes[2] = itemSh3
+                                expandedShapes[2] = false
+                                shapechoicePF3 = itemSh3
+                                println("USER PICKED THE SHAPE: $shapechoicePF3 ON PROFILE 3")
+                            }) {
+                                Text(itemSh3)
+                            }
+                        }
+                    }
+                }
+                }
+            }
+
+            // PROFILE 4 [OPIUM]
+            Column(
             modifier = Modifier.fillMaxSize(),
         ) {
             Box(
@@ -377,6 +472,83 @@ fun App() {
                     contentDescription = null,
                     modifier = Modifier.padding(start = 15.dp, top = 15.dp)
                 )
+
+                // START OF PROFILE 4 FIELD DROPDOWN
+                // START OF PROFILE 4 FIELD DROPDOWN
+                // START OF PROFILE 4 FIELD DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 70.dp, top = 40.dp)
+                ) {
+                    Button(
+                        onClick = { expandedFields[3] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedFields[3], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedFields[3],
+                        onDismissRequest = { expandedFields[3] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        fields1.forEach { itemF4 ->
+                            DropdownMenuItem(onClick = {
+                                selectedFields[3] = itemF4
+                                expandedFields[3] = false
+                                fieldchoicePF4 = itemF4
+                                println("USER PICKED THE FIELD: $fieldchoicePF4 ON PROFILE 4")
+                            }) {
+                                Text(itemF4)
+                            }
+                        }
+                    }
+                }
+                // START OF PROFILE 4 SHAPES DROPDOWN
+                // START OF PROFILE 4 SHAPES DROPDOWN
+                // START OF PROFILE 4 SHAPES DROPDOWN
+                Box(
+                    modifier = Modifier.padding(start = 76.dp, top = 62.dp)
+                ) {
+                    Button(
+                        onClick = { expandedShapes[3] = true },
+                        modifier = Modifier.size(90.dp, 17.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF2A2A2A)),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Text(
+                            selectedShapes[3], color = Color(0xFFFFFFFF), style = TextStyle(
+                                fontFamily = monserratLight,
+                                fontWeight = FontWeight.Normal,
+                                fontStyle = FontStyle.Normal,
+                                fontSize = 10.sp
+                            )
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = expandedShapes[3],
+                        onDismissRequest = { expandedShapes[3] = false },
+                        modifier = Modifier.background(Color(0xFFFFFFFF))
+                    ) {
+                        shapes1.forEach { itemSh4 ->
+                            DropdownMenuItem(onClick = {
+                                selectedShapes[3] = itemSh4
+                                expandedShapes[3] = false
+                                shapechoicePF4 = itemSh4
+                                println("USER PICKED THE SHAPE: $shapechoicePF4 ON PROFILE 4")
+                            }) {
+                                Text(itemSh4)
+                            }
+                        }
+                    }
+                }
             }
         }
         // MAIN HUB
