@@ -24,10 +24,13 @@ import org.sigma.project.requests.Discord
 fun App() {
     val rodcol = 0xFF060606
     val rodcol1 = 0xFF217189
+    val profile1 = "Tabby.png"
+    val profile2 = "bee1wind.png"
+    val profile3 = "Gumball.png"
+    val profile4 = "Diamond.png"
     var lineColor1 by remember { mutableStateOf(rodcol1) }
     var lineColor2 by remember { mutableStateOf(rodcol) }
     var lineColor3 by remember { mutableStateOf(rodcol) }
-
     var fieldchoicePF1: String
     var shapechoicePF1: String
     var fieldchoicePF2: String
@@ -36,7 +39,6 @@ fun App() {
     var shapechoicePF3: String
     var fieldchoicePF4: String
     var shapechoicePF4: String
-
     val fields1 = listOf(
         "Rose",
         "Bamboo",
@@ -125,7 +127,7 @@ fun App() {
                     ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
                 )
                 Image(
-                    painter = painterResource("Tabby.png"),
+                    painter = painterResource(profile1),
                     contentDescription = null,
                     modifier = Modifier.padding(start = 15.dp, top = 15.dp)
                 )
@@ -133,7 +135,6 @@ fun App() {
                     tint = Color(0xFF535353),
                     contentDescription = null,
                     modifier = Modifier.padding(start = 181.dp, top = 85.dp).clickable {
-                        Discord.sendWebhook("User clicked on profile 1 settings")
 
                         // CLICKABLE
                         // CLICKABLE
@@ -248,10 +249,10 @@ fun App() {
                             println("THE USER CHECKED: $isCheckedPF1 ON PROFILE 1")
                         }
                     }
-                    }
                 }
             }
         }
+    }
 
     // PROFILE 2 [OPIUM]
     Column(
@@ -306,7 +307,7 @@ fun App() {
                 ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
             )
             Image(
-                painter = painterResource("bee1wind.png"),
+                painter = painterResource(profile2),
                 contentDescription = null,
                 modifier = Modifier.padding(start = 15.dp, top = 15.dp)
             )
@@ -462,7 +463,7 @@ fun App() {
                 ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
             )
             Image(
-                painter = painterResource("Gumball.png"), contentDescription = null, modifier = Modifier.padding(
+                painter = painterResource(profile3), contentDescription = null, modifier = Modifier.padding(
                     start = 15.dp, top = 15.dp
                 )
             )
@@ -620,7 +621,7 @@ fun App() {
                 ), modifier = Modifier.padding(start = 24.dp, top = 64.dp)
             )
             Image(
-                painter = painterResource("Diamond.png"),
+                painter = painterResource(profile4),
                 contentDescription = null,
                 modifier = Modifier.padding(start = 15.dp, top = 15.dp)
             )
@@ -726,7 +727,11 @@ fun App() {
     Box(
         modifier = Modifier.padding(start = 30.dp, top = 150.dp)
             .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(270.dp).width(150.dp)
-    )
+    ) {
+        Text("Active profile", color = Color(0xFFFFFFFF), style = TextStyle(
+            fontFamily = monserratBold, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal, fontSize = 20.sp), modifier = Modifier.padding(start = 10.dp, top = 10.dp)
+        )
+    }
     // Thing
     Box(
         modifier = Modifier.padding(start = 30.dp, top = 80.dp)
@@ -821,7 +826,7 @@ fun App() {
         "version 1.0.32", color = Color(0xFFC6CDCD), style = TextStyle(
             fontFamily = interfont, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal
         ), modifier = Modifier.padding(start = 660.dp, top = 425.dp)
-        )
+    )
     // Settings
     Icon(painter = painterResource("Settings1.png"),
         tint = Color(0xFFA4A4A4),
@@ -830,11 +835,11 @@ fun App() {
 
         })
     // Close
-    Icon(painter = painterResource("X.png"),
+    Icon(
+        painter = painterResource("X.png"),
         tint = Color(0xFFA4A4A4),
         contentDescription = null,
         modifier = Modifier.padding(start = 725.dp, top = 30.dp).clickable {
             exitProcess(0)
-        })
-
-}
+            })
+    }
