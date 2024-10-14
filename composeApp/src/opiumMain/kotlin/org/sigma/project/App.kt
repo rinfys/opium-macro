@@ -728,7 +728,7 @@ fun App() {
         modifier = Modifier.padding(start = 30.dp, top = 150.dp)
             .background(Color(0xFF1B1B1B), shape = RoundedCornerShape(16.dp)).height(270.dp).width(150.dp)
     ) {
-        Text("Active profile", color = Color(0xFFFFFFFF), style = TextStyle(
+        Text("", color = Color(0xFFFFFFFF), style = TextStyle(
             fontFamily = monserratBold, fontWeight = FontWeight.Normal, fontStyle = FontStyle.Normal, fontSize = 20.sp), modifier = Modifier.padding(start = 10.dp, top = 10.dp)
         )
     }
